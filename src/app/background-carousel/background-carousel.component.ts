@@ -45,7 +45,18 @@ export class BackgroundCarouselComponent implements OnInit {
     return this.http.get('./assets/images/image-list.json');
   }
 
+  toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
+
   startStopTimer() {
+    this.toggleFullScreen();
     this.startTimer = !this.startTimer;
     if (this.startTimer) {
       this.timer = setInterval(() => {
