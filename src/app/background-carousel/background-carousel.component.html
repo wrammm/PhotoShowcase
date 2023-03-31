@@ -1,0 +1,17 @@
+<div class="carousel-container" [ngStyle]="{'grid-template-columns': columns}">
+    <button class="arrow-button left-arrow" (click)="previousImage()">&larr;</button> 
+    <button class="arrow-button right-arrow" (click)="nextImage()">&rarr;</button>
+    <div class="arrow-button-container">
+        <button *ngIf="startTimer == false" class="arrow-button-top up-arrow" (click)="incrementCol(1)">^</button> 
+        <button *ngIf="startTimer == false" class="arrow-button-top down-arrow" (click)="incrementCol(-1)">˅</button>
+        <button *ngIf="startTimer == true" class="arrow-button-top up-arrow" (click)="incTimerUpperLimit(1)">^</button> 
+        <button *ngIf="startTimer == true" class="arrow-button-top down-arrow" (click)="incTimerUpperLimit(-1)">˅</button>
+        <button class="arrow-button-top timer" (click)="startStopTimer()">&#9762;</button>
+    </div>
+    
+    <div *ngFor="img of imgArr" class="imgCont">
+        <img [src]="images[currentIndex]" style="height: 100%;" [ngStyle]="{'width': imgWidth + 'px'}" alt="Test image" >
+    </div>
+
+  </div>
+  
